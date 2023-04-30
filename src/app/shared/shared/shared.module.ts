@@ -4,10 +4,14 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatIconModule} from '@angular/material/icon';
+import { ToopbarComponent } from './toopbar/toopbar.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ToopbarComponent,
+    ToopbarComponent
+  ],
   imports: [
     CommonModule,
     MatCardModule,
@@ -19,7 +23,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
     MatFormFieldModule,
     MatBadgeModule,
-    MatIconModule
+    MatIconModule,
+    ToopbarComponent
   ]
 })
 export class SharedModule { }
