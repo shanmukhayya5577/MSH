@@ -1,0 +1,75 @@
+.login-body {
+  background-position: center;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+.login-card {
+  background-image: url("/assets/images/registerBackground.jpg") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
+}
+
+.login-card-two{
+  background-color: rgb(233, 229, 229) !important;
+}
+
+.lableName{
+  padding-top: 5px;
+  margin: 1px;
+}
+
+.cardInsideImage{
+  position: relative;
+  top: 35%;
+  left: 25%;
+}
+
+.cardInsideText{
+  color: #FFFF;
+  position: relative;
+  left: 36%;
+  top: 35%;
+  margin: 0px;
+}
+
+.cardInsideSpan{
+  color: #FFFF;
+  font-size: 5px;
+  position: relative;
+  left: 45%;
+  top: 33%;
+  margin: 0px;
+}
+
+.cardLoginButton{
+  top: 50%;
+  position: relative;
+}
+
+.cardText{
+  position: relative;
+  top: 35%;
+  left: 25%;
+  color: #FFFF;
+}
+
+.cardLoginButton{
+  position: relative;
+  top: 37%;
+  left: 42%;
+}
+
+.invalid{
+  border: 1px solid red !important;
+  border-radius: 2px;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 1px solid red;
+}
+

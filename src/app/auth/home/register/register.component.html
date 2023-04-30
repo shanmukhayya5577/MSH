@@ -1,0 +1,148 @@
+<div class="container-fluid login-body h-100" [style.background-image]="'url(' + imagePath +')'">
+  <div class="row my-auto ml-5 mr-1 h-100">
+    <div class="col-12 mt-5">
+      <div class="d-flex my-auto card-container align-self-center">
+        <div class="col-2"></div>
+        <div class="col-4 p-0 m-0">
+          <mat-card class="login-card p-0 m-0">
+            <div class="cardInsideImage">
+              <img src="../../../../assets/images/circle.png" height="50px" width="50px" style="border-radius: 1em;">
+            </div>
+            <h5 class="cardInsideText">MeitY</h5> <span class="cardInsideText">Startup Hub</span>
+            <div class="cardInsideSpan">
+              <span>Delivaring Innovation!</span>
+            </div>
+            <div class="cardText">
+              <p class="p-0 m-0">If you are a Existing user, click </p>
+              <p class="ml-5 my-0 p-0">Here for Login</p>
+            </div>
+            <div class="cardLoginButton">
+              <button style="border-radius: 5px;" type="submit" (click)="NavigateToLogin()">Login</button>
+            </div>
+          </mat-card>
+        </div>
+
+        <div class="col-4 p-0 m-0">
+          <mat-card class="login-card-two p-0 m-0">
+            <div class="text-center">
+              <h3 class="p-0 m-0">Create Your MSH Account</h3>
+            </div>
+            <div class="col-md-12">
+              <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+
+                <div class="inputField">
+                  <label class="lableName">First Name
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div [ngClass]="{
+                    'invalid':
+                      registerForm.controls['first_name']
+                        .invalid &&
+                      registerForm.controls['first_name']
+                        .touched}">
+                    <input class="form-control form-control-sm" formControlName="first_name">
+                  </div>
+                  <div>
+                    <span class="text-danger"
+                      *ngIf="registerForm?.get('first_name')?.invalid && registerForm?.get('first_name')?.touched">
+                      First Name is required or Enter the valid Name
+                    </span>
+                    <!-- <div class="text-danger" *ngIf="!namePattern">
+                      Enter the valid Name
+                    </div> -->
+                  </div>
+                </div>
+
+                <div class="inputField">
+                  <label class="lableName">Last Name</label>
+                  <input class="form-control form-control-sm" formControlName="last_name" type="text">
+                </div>
+
+                <div class="inputField">
+                  <label class="lableName">Mobile Number
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div [ngClass]="{
+                    'invalid':
+                      registerForm.controls['mobile_number']
+                        .invalid &&
+                      registerForm.controls['mobile_number']
+                        .touched}">
+                    <input class="form-control form-control-sm" type="text" formControlName="mobile_number"
+                      (keypress)="handleAlphaChar($event)">
+                  </div>
+                  <div class="text-danger"
+                    *ngIf="registerForm?.get('mobile_number')?.invalid && registerForm?.get('mobile_number')?.touched">
+                    Mobile Number is required
+                  </div>
+                </div>
+
+                <div class="inputField">
+                  <label class="lableName">Email
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div [ngClass]="{
+                    'invalid':
+                      registerForm.controls['email_id']
+                        .invalid &&
+                      registerForm.controls['email_id']
+                        .touched}">
+                    <input class="form-control form-control-sm" formControlName="email_id" type="text">
+                  </div>
+                  <div>
+                    <span class="text-danger" *ngIf="registerForm?.get('email_id')?.invalid && registerForm?.get('email_id')?.touched">
+                      E-mail id is required
+                    </span>
+                  </div>
+                </div>
+
+                <div class="inputField">
+                  <label class="lableName">Password
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div [ngClass]="{
+                    'invalid':
+                      registerForm.controls['password']
+                        .invalid &&
+                      registerForm.controls['password']
+                        .touched}">
+                    <input class="form-control form-control-sm" type="text" formControlName="password">
+                  </div>
+                  <div>
+                    <span class="text-danger" *ngIf="registerForm?.get('password')?.invalid && registerForm?.get('password')?.touched">
+                      Password is required
+                    </span>
+                  </div>
+                </div>
+
+                <div class="inputField">
+                  <label class="lableName">Confirm Password
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div [ngClass]="{
+                    'invalid':
+                      registerForm.controls['confirm_password']
+                        .invalid &&
+                      registerForm.controls['confirm_password']
+                        .touched}">
+                    <input class="form-control form-control-sm" type="text" formControlName="confirm_password">
+                  </div>
+                  <div>
+                    <span class="text-danger" *ngIf="(registerForm.value.password!==registerForm.value.confirm_password) ">
+                      Please enter above same password
+                    </span>
+                  </div>
+                </div>
+
+                <div class="col-md-12 py-3 pl-0">
+                  <button class="btn btn-primary" type="submit">Register</button>
+                </div>
+              </form>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col-2"></div>
+      </div>
+    </div>
+  </div>
+</div>
