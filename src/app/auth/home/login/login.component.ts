@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +10,10 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   imagePath!: string;
+  LoginForm:any=FormGroup;
+  hide = true;
+  showPassword:any= true;
+
 
   imagePathArray = [
     '/assets/images/backgroundImage1.jpg',
@@ -23,16 +27,37 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private fb:FormBuilder
+    private fb:FormBuilder,
   ) { }
 
   ngOnInit(): void {
     const random = Math.floor(Math.random() * this.imagePathArrays.length);
     this.imagePath = this.imagePathArrays[random];
+
+    this.loginFormData();
+  }
+
+  loginFormData(){
+    this.LoginForm = this.fb.group({
+      email_id:['',[Validators.required, Validators.pattern('[[a-zA-Z0-9+_.-.]+@+[a-zA-Z0-9]+[.]+[.a-z]{2,7}')]],
+      password:['',[Validators.required]]
+    })
   }
 
   NavigateToRegister(){
     this.router.navigate(['register'])
+  }
+
+  submitLogin(){
+    if(this.LoginForm.valid){
+
+    } else{
+      this.LoginForm.markAllAsTouched()
+    }
+  }
+
+  navigateToForgot(){
+    this.router.navigate(['forgot'])
   }
 
 }

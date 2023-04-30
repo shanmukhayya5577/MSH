@@ -29,25 +29,21 @@
             </div>
             <div class="col-md-12">
               <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
-
                 <div class="inputField">
                   <label class="lableName">First Name
                     <span class="text-danger">*</span>
                   </label>
                   <div [ngClass]="{
                     'invalid':
-                      registerForm.controls['first_name']
-                        .invalid &&
-                      registerForm.controls['first_name']
-                        .touched}">
+                    registerForm?.get('first_name')?.invalid &&
+                    registerForm?.get('first_name')?.touched }">
                     <input class="form-control form-control-sm" formControlName="first_name">
                   </div>
                   <div>
-                    <span class="text-danger"
-                      *ngIf="registerForm?.get('first_name')?.invalid && registerForm?.get('first_name')?.touched">
-                      First Name is required or Enter the valid Name
+                    <span class="text-danger" *ngIf="registerForm?.get('first_name')?.invalid && registerForm?.get('first_name')?.touched">
+                      Enter Valid First Name
                     </span>
-                    <!-- <div class="text-danger" *ngIf="!namePattern">
+                    <!-- <div class="text-danger" *ngIf="registerForm?.get('first_name')?.errors?.pattren">
                       Enter the valid Name
                     </div> -->
                   </div>

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   imagePath!: string;
-  registerForm!: FormGroup;
+  registerForm:any= FormGroup;
 
   constructor(
     private fb: FormBuilder,
