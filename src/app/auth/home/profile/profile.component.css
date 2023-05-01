@@ -1,0 +1,72 @@
+.profile-background{
+  background-image: url("/assets/images/profileBackground.jpg");
+  height: 30vh;
+  width: 100vw;
+  /* overflow-x: hidden; */
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-position: center;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed;
+}
+.lable{
+  color: #FFFF;
+}
+.mainContainer{
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.profileButtonProfile{
+  z-index: 1;
+  position: absolute;
+  width: 10%;
+  color: black;
+  background-color: #eee7e7;
+  border: none;
+  border-radius: 1rem;
+  bottom: 60%;
+  left: 31%;
+  padding: 4px;
+}
+
+.profileButtonGallery{
+  position: absolute;
+  width: 10%;
+  bottom: 60%;
+  left: 42%;
+  padding: 4px;
+  color: black;
+  background-color: #eee7e7;
+  border: none;
+  border-radius: 1rem;
+}
+
+.profileButtonDashBoard{
+  position: absolute;
+  width: 10%;
+  bottom: 60%;
+  left: 53%;
+  padding: 4px;
+  color: black;
+  background-color: #eee7e7;
+  border: none;
+  border-radius: 1rem;
+}
+
+.profileButtonProfile:hover{
+  background-color: rgb(118, 118, 238);
+}
+.profileButtonGallery:hover{
+  background-color: rgb(118, 118, 238);
+}
+.profileButtonDashBoard:hover{
+  background-color: rgb(118, 118, 238);
+}

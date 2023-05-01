@@ -6,13 +6,17 @@ import { LoginComponent } from './home/login/login.component';
 import { ForgotPasswordComponent } from './home/forgot-password/forgot-password.component';
 import { SharedModule } from '../shared/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './home/profile/profile.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     RegisterComponent,
        LoginComponent,
-       ForgotPasswordComponent
+       ForgotPasswordComponent,
+       ProfileComponent,
+       DashboardComponent
   ],
   imports: [
     CommonModule,

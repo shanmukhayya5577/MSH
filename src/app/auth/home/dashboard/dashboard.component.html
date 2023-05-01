@@ -1,0 +1,54 @@
+<div class="w-100 h-100 mainContainer">
+  <ng-container>
+    <app-toopbar></app-toopbar>
+  </ng-container>
+  <ng-container>
+    <app-sidenav></app-sidenav>
+  </ng-container>
+
+  <div class="container mr-3">
+    <mat-card>
+    <div class="col-md-12">
+      <div class="form-group">
+        <input class="form-control form-control-sm" placeholder="Search">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-8 d-flex">
+        <div class="col-md-2">
+          <button class="dashboardbutton" type="submit" (click)="navigateToStartsUp()">
+            StartsUp
+          </button>
+        </div>
+        <div class="col-md-2">
+          <button class="dashboardbutton">
+           Mentors
+          </button>
+        </div>
+        <div class="col-md-2">
+          <button class="dashboardbutton">
+           Incubetors
+          </button>
+        </div>
+        <div class="col-md-2">
+          <button class="dashboardbutton">
+           Freelancer
+          </button>
+        </div>
+        <div class="col-md-2">
+          <button class="dashboardbutton">
+            Accelator/COE
+          </button>
+        </div>
+        <div class="col-md-2">
+          <button class="dashboardbutton">
+           Investor
+          </button>
+        </div>
+      </div>
+      </div>
+    </div>
+    </mat-card>
+  </div>
+</div>

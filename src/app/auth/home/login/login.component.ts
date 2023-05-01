@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
 
   submitLogin(){
     if(this.LoginForm.valid){
-
+      this.router.navigate(['profile'])
     } else{
       this.LoginForm.markAllAsTouched()
     }
