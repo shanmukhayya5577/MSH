@@ -8,9 +8,12 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
+  user:any;
+
   constructor(private route:Router) { }
 
   ngOnInit(): void {
+    this.user =   localStorage.getItem('user');
   }
 
 

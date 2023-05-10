@@ -8,7 +8,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
-  isOpened:boolean=false;
+  isOpened:boolean=true;
   // @ViewChild('expand', { read: NgbTooltip }) expand: any;
   panelOpenState = false;
 
@@ -19,17 +19,17 @@ export class SidenavComponent implements OnInit {
 
   openNav() {
     if (this.isOpened) {
-      document.getElementById('sideNav')?.style.transition['0.2'];
-      document.getElementById('sideNav')?.style.width['55']
-      document.getElementById('mainContent')?.style.marginLeft[55];
+      // document.getElementById('sideNav')?.style.transition['0.2'];
+      // document.getElementById('sideNav').style.width['55px'];
+      // document.getElementById('mainContent')?.style.marginLeft[55];
 
       // document.getElementById('sideNav').style.transition = '0.2';
       // document.getElementById('sideNav').style.width
       // document.getElementById('mainContent').style.marginLeft = '55px';
       this.isOpened = false;
     } else {
-      document.getElementById('sideNav')?.style.width['225'];
-      document.getElementById('mainContent')?.style.marginLeft[225];
+      // document.getElementById('sideNav')?.style.width['225'];
+      // document.getElementById('mainContent')?.style.marginLeft[225];
 
       // document.getElementById('sideNav').style.width = '225px';
       // document.getElementById('mainContent').style.marginLeft = '225px';

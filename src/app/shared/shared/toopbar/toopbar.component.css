@@ -1,6 +1,31 @@
-.vertical {
+/* .vertical {
   border-left: 2px solid black;
   height: 31px;
   position: absolute;
   left: 13%;
+} */
+
+.notdropdownelement {
+  font-size: 22px;
+  color: black;
+  padding: 6px 10px;
+  border-radius: 5px !important;
+  border: none;
+  line-height: 24px !important;
+  align-items: center;
+  background-color: white;
 }
+
+div.dropdown-menu.show {
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0px;
+  background-color: var(--paynext-bg);
+  border-color: var(--paynext-topbar-menu-border);
+}
+
+.dropdown-divider {
+  margin: 0.125rem;
+}
+

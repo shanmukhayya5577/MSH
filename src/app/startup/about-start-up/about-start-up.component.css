@@ -1,0 +1,51 @@
+
+.MSH-disabled-btn {
+  opacity: 1 !important;
+  background-color: #e3e3e3;
+  color: #cecece;
+  font-size: 14px !important;
+  padding: 7px 15px 7px 15px;
+  border-radius: 4px !important;
+  border: 0.5px solid #cecece;
+  line-height: 24px !important;
+  align-items: center;
+  margin-left: 7px;
+  margin-right: 4px;
+}
+
+.MSH-prev-btn {
+  background-color: #007bff;
+  color: #FFFF;
+  font-size: 13px !important;
+  padding: 8px 15px;
+  border: none !important;
+  border-radius: 4px !important;
+  line-height: 24px !important;
+  align-items: center;
+  white-space: nowrap;
+  margin-right: 4px;
+}
+
+/* .lableName{
+  padding-top: 5px;
+  margin: 1px;
+} */
+
+.invalid{
+  border: 1px solid red !important;
+  border-radius: 2px;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 1px solid red;
+}
+
+.image-box {
+  height: 10.8em !important;
+  width: 90% !important;
+  border: 1px solid black !important;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+

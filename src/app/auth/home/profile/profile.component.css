@@ -2,7 +2,6 @@
   background-image: url("/assets/images/profileBackground.jpg");
   height: 30vh;
   width: 100vw;
-  /* overflow-x: hidden; */
   overflow-x: hidden;
   overflow-y: hidden;
   background-position: center;
@@ -13,10 +12,10 @@
 .lable{
   color: #FFFF;
 }
-.mainContainer{
+/* .mainContainer{
   overflow-x: hidden;
   overflow-y: hidden;
-}
+} */
 .button-row {
   display: flex;
   align-items: center;

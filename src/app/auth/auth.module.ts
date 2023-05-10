@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './home/profile/profile.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
     AuthRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class AuthModule { }

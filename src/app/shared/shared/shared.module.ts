@@ -8,6 +8,14 @@ import { ToopbarComponent } from './toopbar/toopbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { RouterModule } from '@angular/router';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
+// import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -23,7 +31,17 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatBadgeModule,
     MatIconModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule,
+    RouterModule,
+    MatAutocompleteModule,
+    HttpClientModule,
+    MatInputModule
+    // ToastrModule
+
   ],
   exports:[
     MatCardModule,
@@ -33,7 +51,16 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ToopbarComponent,
     SidenavComponent,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule,
+    RouterModule,
+    MatAutocompleteModule,
+    HttpClientModule,
+    MatInputModule
+    // ToastrModule
   ]
 })
 export class SharedModule { }

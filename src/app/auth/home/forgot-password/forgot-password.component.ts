@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -25,7 +26,8 @@ export class ForgotPasswordComponent implements OnInit {
   }
   constructor(
     private fb:FormBuilder,
-    private router:Router
+    private router:Router,
+    private service:ServiceService
   ) { }
 
   ngOnInit(): void {
@@ -45,7 +47,12 @@ export class ForgotPasswordComponent implements OnInit {
 
   submitForgotPassword(){
     if(this.forgotPasswordForm.valid){
+      const reqBody = {
 
+      }
+      this.service.forgotPassword(reqBody).subscribe(res=>{
+        console.log(res);
+      })
     } else{
       this.forgotPasswordForm.markAllAsTouched()
     }

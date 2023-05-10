@@ -33,24 +33,28 @@
               </div>
               <div class="col-md-12">
                 <form [formGroup]="LoginForm" (ngSubmit)="submitLogin()">
+
                   <div class="inputField">
                     <label class="lableName">Email
                       <span class="text-danger">*</span>
                     </label>
                     <div [ngClass]="{
-                      'invalid':
-                        LoginForm.controls['email_id']
-                          .invalid &&
-                        LoginForm.controls['email_id']
-                          .touched}">
-                      <input class="form-control form-control-sm" formControlName="email_id" type="text">
-                    </div>
-                    <div>
-                      <span class="text-danger"
-                        *ngIf="LoginForm?.get('email_id')?.invalid && LoginForm?.get('email_id')?.touched">
-                        E-mail id is required
-                      </span>
-                    </div>
+                    'invalid':
+                      LoginForm.controls['email_id']
+                        .invalid &&
+                      LoginForm.controls['email_id']
+                        .touched}">
+                    <input class="form-control form-control-sm" formControlName="email_id" type="text">
+                  </div>
+                  <div>
+                    <span class="text-danger" *ngIf="LoginForm?.get('email_id')?.invalid && LoginForm?.get('email_id')?.touched
+                    && !LoginForm.get('email_id')?.errors?.['pattern']">
+                      E-mail id is required
+                    </span>
+                    <span class="text-danger" *ngIf="LoginForm.get('email_id')?.errors?.['pattern']">
+                      Enter the valid Email
+                    </span>
+                  </div>
                   </div>
 
                   <div class="inputField">

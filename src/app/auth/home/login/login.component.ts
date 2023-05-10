@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +12,9 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   imagePath!: string;
-  LoginForm:any=FormGroup;
+  LoginForm!:FormGroup;
   hide = true;
   showPassword:any= true;
-
 
   imagePathArray = [
     '/assets/images/backgroundImage1.jpg',
@@ -28,6 +29,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router:Router,
     private fb:FormBuilder,
+    private servie:ServiceService,
+    private toast:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +53,18 @@ export class LoginComponent implements OnInit {
 
   submitLogin(){
     if(this.LoginForm.valid){
-      this.router.navigate(['profile'])
+      this.servie.login().subscribe(res=>{
+         const user = res.find((val:any)=>{
+          if(val['email_id'] === this.LoginForm.value.email_id && val['password'] === this.LoginForm.value.password){
+            this.toast.success('Login Successfull')
+            this.router.navigate(['profile']);
+            localStorage.setItem('user',val['email_id'])
+          }
+          else{
+            this.toast.error('User Not Found Please Register')
+          }
+        })
+      })
     } else{
       this.LoginForm.markAllAsTouched()
     }

@@ -1,12 +1,9 @@
 <div class="w-100 h-100 mainContainer">
   <ng-container>
-    <app-toopbar></app-toopbar>
-  </ng-container>
-  <ng-container>
     <app-sidenav></app-sidenav>
   </ng-container>
 
-  <div class="container mr-3">
+  <div class="container mr-4">
     <mat-card>
     <div class="col-md-12">
       <div class="form-group">
@@ -22,7 +19,7 @@
           </button>
         </div>
         <div class="col-md-2">
-          <button class="dashboardbutton">
+          <button class="dashboardbutton" type="button" (click)="openMenter()">
            Mentors
           </button>
         </div>
@@ -50,5 +47,32 @@
       </div>
     </div>
     </mat-card>
+
+    <ng-container *ngIf="openMentor">
+      <div class="col-md-12 ml-3 ">
+        <div class="row">
+          <div class="col-md-4 mt-3" *ngFor="let data of getAlldata">
+
+            <mat-card>
+              <img src="../../../../assets/images/profile.png" height="60px" width="60px">
+              <div class="row">
+                  <p><b>{{data.contact_first_name}}</b></p><br>
+
+                </div>
+ <!-- <p>{{data.contact_state}}</p>
+                <p>{{data.contact_city}}</p> -->
+                <hr>
+                <div class="text-center"><span>Mentors Media & Entertaimment</span></div>
+
+            </mat-card>
+
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
   </div>
+
+
 </div>
+

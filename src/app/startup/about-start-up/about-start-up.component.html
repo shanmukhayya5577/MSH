@@ -1,0 +1,745 @@
+<div class="container-fluid login-body h-100" [style.background-image]="'url('+ imagePath +')'">
+  <div class="container">
+    <div class="col-md-12">
+      <mat-card>
+        <div class="mx-5 px-5">
+          <hr>
+        </div>
+        <mat-stepper linear #stepper (selectionChange)="changePathName($event)">
+          <mat-step (interacted)="onStepperInteracted()">
+            <!-- [stepControl]="aboutStartupForm"  -->
+            <form [formGroup]="aboutStartupForm">
+              <ng-template matStepLabel>About Startup</ng-template>
+
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <div class="inputField">
+                      <label class="lableName">Startup Name
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div [ngClass]="{
+                        'invalid':
+                        aboutStartupForm.get('startup_name')?.invalid &&
+                        aboutStartupForm.get('startup_name')?.touched }">
+                        <input class="form-control form-control-sm" formControlName="startup_name" type="text">
+                      </div>
+                      <div>
+                        <span class="text-danger"
+                          *ngIf="aboutStartupForm?.get('startup_name')?.invalid && aboutStartupForm?.get('startup_name')?.touched">
+                          Startup Name is required
+                        </span>
+                        <div class="text-danger" *ngIf="aboutStartupForm?.get('startup_name')?.errors?.['pattren']">
+                          Enter the Startup Name
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="inputField">
+                      <label class="lableName">Brief About Startup
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div>
+                        <textarea formControlName="brief_startup" rows="4" cols="40" type="text"></textarea>
+                      </div>
+                      <div>
+                        <span class="text-danger"
+                          *ngIf="aboutStartupForm?.get('brief_startup')?.invalid && aboutStartupForm?.get('brief_startup')?.touched">
+                          Enter Brief About Startup
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="inputField">
+                      <label class="lableName">Stage:
+                        <span class="text-danger">*</span>
+                      </label><br>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="Idetion" name="stage" formControlName="stage"
+                          value="Idetion">
+                        <label class="form-check-label">Idetion</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="Prototype" name="stage" formControlName="stage"
+                          value="Prototype">
+                        <label class="form-check-label">Prototype</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="MVP" name="stage" formControlName="stage"
+                          value="MVP">
+                        <label class="form-check-label">Minimum Viable product(MVP)</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="Scaling" name="stage" formControlName="stage"
+                          value="Scaling">
+                        <label class="form-check-label">Scaling/Go To Market</label>
+                      </div>
+                    </div>
+
+                    <div class="inputField">
+                      <label class="lableName">Website URL
+                      </label>
+                      <div>
+                        <input class="form-control form-control-sm" formControlName="website_url" type="text"
+                          placeholder="Please Enter Website URL ">
+                      </div>
+                    </div>
+
+                    <div class="inputField">
+                      <label class="lableName">Funded/Bootstarped?
+                        <span class="text-danger">*</span>
+                      </label><br>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="Bootstarped" name="fund_bootstarp"
+                          formControlName="fund_bootstarp" value="Bootstarped">
+                        <label class="form-check-label">Bootstarped</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="Funded" name="fund_bootstarp"
+                          formControlName="fund_bootstarp" value="Funded">
+                        <label class="form-check-label">Funded</label>
+                      </div>
+                    </div>
+
+                    <div class="inputField">
+                      <label class="lableName">Part of TIDE Incubator
+                        <span class="text-danger">*</span>
+                      </label><br>
+                      <mat-slide-toggle class="example-margin" color="primary" [checked]="checked"
+                        [disabled]="disabled">
+                      </mat-slide-toggle>
+                    </div>
+
+                    <label class="lableName">Domian
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div
+                      [ngClass]="{'invalid':aboutStartupForm.controls['domain'].invalid && aboutStartupForm.controls['domain'].touched}">
+                      <input type="search" placeholder="Domain" class="form-control form-control-sm"
+                        formControlName="domain" [matAutocomplete]="auto"
+                        style="width:100%;border: 1px solid #ced4da;border-radius: 0.2rem;">
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                          {{option}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </div>
+                    <span class="text-danger"
+                      *ngIf="aboutStartupForm?.get('domain')?.invalid && aboutStartupForm?.get('domain')?.touched">
+                      Domian is required
+                    </span>
+                    <span class="text-danger" *ngIf="aboutStartupForm?.get('domain')?.errors?.['pattren']">
+                      Enter the valid Domian
+                    </span>
+
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="col-md-12">
+                      <div class="row">
+
+                        <div class="col-md-6">
+                          <div class="image-box" >
+                            <!-- [style.backgroundImage]="'url('+ getFile +')'" -->
+                            <img [src]="getFile" alt=" " style="height:100%; width: 100%;">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="lableName">Entity/Company Logo:
+                            <span class="text-danger">*</span>
+                          </label>
+                          <input type="file" (change)="selectFile($event)" formControlName="doc_file"
+                          accept=".png, .jpg, .jpeg">
+                        </div>
+
+                      </div>
+                    </div>
+                    <span>Note : &nbsp;<b class="text-danger">Please Upload PNG/JPEG/JPG. Maximum size of the file is
+                        2MB</b></span>
+
+                    <div class="inputField pt-5">
+                      <label class="lableName">CIN Number
+                      </label>
+                      <div>
+                        <input class="form-control form-control-sm" formControlName="CIN_Number" type="text"
+                          placeholder="Please Enter CIN Number">
+                      </div>
+                    </div> <br>
+
+                    <label class="lableName">Name of the Incubator
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div [ngClass]="{'invalid':aboutStartupForm.controls['incubator_name'].invalid && aboutStartupForm.controls['incubator_name'].touched}">
+                      <input type="search" (keyup)="applyFilter($event)" class="form-control custom-select-sm"
+                          formControlName="incubator_name" [matAutocomplete]="auto1" placeholder="Incubetor Name"
+                        style="width:100%;border: 1px solid #ced4da;border-radius: 0.2rem;">
+                      <mat-autocomplete #auto1="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions1 | async" [value]="option">
+                          {{option}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </div>
+                    <span class="text-danger"
+                    *ngIf="aboutStartupForm.get('incubator_name')?.invalid && aboutStartupForm.get('incubator_name')?.touched">
+                    Name of the Incubator is required
+                  </span>
+                  <span class="text-danger" *ngIf="aboutStartupForm?.get('incubator_name')?.errors?.['pattren']">
+                    Enter the valid Name of the Incubator
+                  </span> <br>
+
+                    <label class="lableName">Sector:
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div [ngClass]="{'invalid':aboutStartupForm.controls['sector'].invalid && aboutStartupForm.controls['sector'].touched}">
+                      <input type="search" class="form-control custom-select-sm"
+                          formControlName="sector" [matAutocomplete]="auto2" placeholder="Incubetor Name"
+                        style="width:100%;border: 1px solid #ced4da;border-radius: 0.2rem;">
+                      <mat-autocomplete #auto2="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions2 | async" [value]="option">
+                          {{option}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </div>
+                    <span class="text-danger"
+                    *ngIf="aboutStartupForm.get('sector')?.invalid && aboutStartupForm.get('sector')?.touched">
+                    Sector is required
+                  </span>
+                  <span class="text-danger" *ngIf="aboutStartupForm?.get('sector')?.errors?.['pattren']">
+                    Enter the valid Sector
+                  </span>
+
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step>
+            <!-- [stepControl]="contactInfoForm" -->
+            <form [formGroup]="contactInfoForm">
+              <ng-template matStepLabel>Contact Info</ng-template>
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-6">
+
+                    <div class="inputField">
+                      <label class="lableName">First Name:
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div [ngClass]="{
+                        'invalid':
+                        contactInfoForm.get('contact_first_name')?.invalid &&
+                        contactInfoForm.get('contact_first_name')?.touched }">
+                        <input class="form-control form-control-sm" formControlName="contact_first_name" type="text"
+                        placeholder="First Name">
+                      </div>
+                      <div>
+                        <span class="text-danger"
+                          *ngIf="contactInfoForm?.get('contact_first_name')?.invalid && contactInfoForm?.get('contact_first_name')?.touched">
+                          First Name is required
+                        </span>
+                        <div class="text-danger"
+                          *ngIf="contactInfoForm?.get('contact_first_name')?.errors?.['pattren']">
+                          Enter the valid First Name
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="inputField">
+                      <label class="lableName">Mobile Number 1:
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div [ngClass]="{
+                        'invalid':
+                        contactInfoForm.get('contact_mobile')?.invalid &&
+                        contactInfoForm.get('contact_mobile')?.touched }">
+                        <input class="form-control form-control-sm" formControlName="contact_mobile" type="text"
+                        (keypress)="handleAlphaChar($event)" placeholder="Mobile Number 1">
+                      </div>
+                      <div>
+                        <span class="text-danger"
+                          *ngIf="contactInfoForm?.get('contact_mobile')?.invalid && contactInfoForm?.get('contact_mobile')?.touched">
+                          Mobile Number is required
+                        </span>
+                        <div class="text-danger" *ngIf="contactInfoForm?.get('contact_mobile')?.errors?.['pattren']">
+                          Enter the valid Mobile Number
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="inputField">
+                      <label class="lableName">Email Address 1:
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div [ngClass]="{
+                        'invalid':
+                          contactInfoForm.controls['contact_email_id']
+                            .invalid &&
+                          contactInfoForm.controls['contact_email_id']
+                            .touched}">
+                        <input class="form-control form-control-sm" formControlName="contact_email_id" type="text"
+                        placeholder="Email Address 1">
+                      </div>
+                      <div>
+                        <span class="text-danger" *ngIf="contactInfoForm?.get('contact_email_id')?.invalid && contactInfoForm?.get('contact_email_id')?.touched
+                        && !contactInfoForm.get('contact_email_id')?.errors?.['pattern']">
+                          E-mail id is required
+                        </span>
+                        <span class="text-danger" *ngIf="contactInfoForm.get('contact_email_id')?.errors?.['pattern']">
+                          Enter the valid Email
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="inputField">
+                      <label class="lableName">Address:
+                      </label>
+                    </div>
+
+                    <label class="lableName">Country:
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div
+                      [ngClass]="{'invalid':contactInfoForm.controls['contact_country'].invalid && contactInfoForm.controls['contact_country'].touched}">
+                      <input type="search" placeholder="Country" class="form-control form-control-sm"
+                        formControlName="contact_country" [matAutocomplete]="auto3"
+                        style="width:100%;border: 1px solid #ced4da;border-radius: 0.2rem;">
+                      <mat-autocomplete #auto3="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions3 | async" [value]="option">
+                          {{option}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </div>
+                    <span class="text-danger"
+                      *ngIf="contactInfoForm?.get('contact_country')?.invalid && contactInfoForm?.get('contact_country')?.touched">
+                      Country is required
+                    </span>
+                    <span class="text-danger" *ngIf="contactInfoForm?.get('contact_country')?.errors?.['pattren']">
+                      Enter the valid Country
+                    </span>
+
+                    <div class="inputField">
+                      <label class="lableName">City/Town
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div [ngClass]="{
+                        'invalid':
+                          contactInfoForm.controls['contact_city']
+                            .invalid &&
+                          contactInfoForm.controls['contact_city']
+                            .touched}">
+                        <input class="form-control form-control-sm" formControlName="contact_city" type="text" placeholder="City/Town">
+                      </div>
+                      <div>
+                        <span class="text-danger" *ngIf="contactInfoForm?.get('contact_city')?.invalid && contactInfoForm?.get('contact_city')?.touched
+                        && !contactInfoForm.get('contact_city')?.errors?.['pattern']">
+                          City/Town is required
+                        </span>
+                        <span class="text-danger" *ngIf="contactInfoForm.get('contact_city')?.errors?.['pattern']">
+                          Enter the valid City/Town
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="inputField">
+                      <label class="lableName">Last Name:
+                      </label>
+                      <div>
+                        <input class="form-control form-control-sm" formControlName="contact_last_name" type="text"
+                        placeholder="Last name">
+                      </div>
+                    </div>
+
+                    <div class="inputField">
+                      <label class="lableName">Mobile Number 2(optional)
+                      </label>
+                      <div>
+                        <input class="form-control form-control-sm" formControlName="contact_mobile2" type="text"
+                          placeholder="Pleas Enter Mobile Number 2" (keypress)="handleAlphaChar($event)">
+                      </div>
+                        <div class="text-danger" *ngIf="contactInfoForm?.get('contact_mobile2')?.errors?.['pattren']">
+                          Enter the valid Mobile Number
+                        </div>
+                    </div>
+
+                    <div class="inputField mt-2">
+                      <label class="lableName">Email Address 2(optional)
+                      </label>
+                      <div>
+                        <input class="form-control form-control-sm" formControlName="contact_email_id2" type="text"
+                          placeholder="Pleas Enter Email Address 2">
+                      </div>
+                      <div class="text-danger" *ngIf="contactInfoForm?.get('contact_email_id2')?.errors?.['pattren']">
+                        Enter the valid >Email Address 2
+                      </div>
+                    </div> <br>
+
+                    <label class="lableName">State:
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div
+                      [ngClass]="{'invalid':contactInfoForm.controls['contact_state'].invalid && contactInfoForm.controls['contact_state'].touched}">
+                      <input type="search" placeholder="Country" class="form-control form-control-sm"
+                        formControlName="contact_state" [matAutocomplete]="auto4"
+                        style="width:100%;border: 1px solid #ced4da;border-radius: 0.2rem;">
+                      <mat-autocomplete #auto4="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions4 | async" [value]="option">
+                          {{option}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </div>
+                    <span class="text-danger"
+                      *ngIf="contactInfoForm?.get('contact_state')?.invalid && contactInfoForm?.get('contact_state')?.touched">
+                      State is required
+                    </span>
+                    <span class="text-danger" *ngIf="contactInfoForm?.get('contact_state')?.errors?.['pattren']">
+                      Enter the valid State
+                    </span>
+
+                    <div class="inputField">
+                      <label class="lableName">Zipcode:
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div>
+                        <input class="form-control form-control-sm" formControlName="contact_zip" type="text">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step>
+            <!-- [stepControl]="teamCollabrationForm" -->
+            <form [formGroup]="teamCollabrationForm">
+              <ng-template matStepLabel>Team Collabration</ng-template>
+              <ng-container formArrayName="team_collabration"
+                *ngFor="let teamData of teamCollabrationData.controls; index as i">
+                <ng-container [formGroupName]="i" ]>
+                  <mat-card class="mt-3">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="inputField">
+                            <label class="lableName">Name Of The Team Member
+                              <span class="text-danger">*</span>
+                            </label>
+                            <div [ngClass]="{
+                              'invalid':
+                              teamCollabrationForm.get('teamcollabartin_team_name')?.invalid &&
+                              teamCollabrationForm.get('teamcollabartin_team_name')?.touched }">
+                              <input class="form-control form-control-sm" formControlName="teamcollabartin_team_name"
+                                type="text">
+                            </div>
+                            <div>
+                              <span class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_team_name')?.invalid && teamCollabrationForm?.get('teamcollabartin_team_name')?.touched">
+                                Startup Name is required
+                              </span>
+                              <div class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_team_name')?.errors?.['pattren']">
+                                Enter the valid Startup Name
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="inputField">
+                            <label class="lableName">Experience
+                              <span class="text-danger">*</span>
+                            </label>
+                            <div [ngClass]="{
+                              'invalid':
+                              teamCollabrationForm.get('teamcollabartin_experience')?.invalid &&
+                              teamCollabrationForm.get('teamcollabartin_experience')?.touched }">
+                              <input class="form-control form-control-sm" formControlName="teamcollabartin_experience"
+                                type="text">
+                            </div>
+                            <div>
+                              <span class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_experience')?.invalid && teamCollabrationForm?.get('teamcollabartin_experience')?.touched">
+                                Experience is required
+                              </span>
+                              <div class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_experience')?.errors?.['pattren']">
+                                Enter the valid Experience
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="inputField">
+                            <label class="lableName">Email Address
+                              <span class="text-danger">*</span>
+                            </label>
+                            <div [ngClass]="{
+                              'invalid':
+                              teamCollabrationForm.get('teamcollabartin_email')?.invalid &&
+                              teamCollabrationForm.get('teamcollabartin_email')?.touched }">
+                              <input class="form-control form-control-sm" formControlName="teamcollabartin_email"
+                                type="text">
+                            </div>
+                            <div>
+                              <span class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_email')?.invalid && teamCollabrationForm?.get('teamcollabartin_email')?.touched">
+                                Email Address is required
+                              </span>
+                              <div class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_email')?.errors?.['pattren']">
+                                Enter the valid Email Address
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="inputField">
+                            <label class="lableName">Designation
+                              <span class="text-danger">*</span>
+                            </label>
+                            <div [ngClass]="{
+                              'invalid':
+                              teamCollabrationForm.get('teamcollabartin_designation')?.invalid &&
+                              teamCollabrationForm.get('teamcollabartin_designation')?.touched }">
+                              <input class="form-control form-control-sm" formControlName="teamcollabartin_designation"
+                                type="text">
+                            </div>
+                            <div>
+                              <span class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_designation')?.invalid && teamCollabrationForm?.get('teamcollabartin_designation')?.touched">
+                                Designation is required
+                              </span>
+                              <div class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_designation')?.errors?.['pattren']">
+                                Enter the valid Designation
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="inputField">
+                            <label class="lableName">Linkedin Profile
+                              <span class="text-danger">*</span>
+                            </label>
+                            <div [ngClass]="{
+                              'invalid':
+                              teamCollabrationForm.get('teamcollabartin_linkedin')?.invalid &&
+                              teamCollabrationForm.get('teamcollabartin_linkedin')?.touched }">
+                              <input class="form-control form-control-sm" formControlName="teamcollabartin_linkedin"
+                                type="text">
+                            </div>
+                            <div>
+                              <span class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_linkedin')?.invalid && teamCollabrationForm?.get('teamcollabartin_linkedin')?.touched">
+                                Linkedin Profile is required
+                              </span>
+                              <div class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_linkedin')?.errors?.['pattren']">
+                                Enter the valid Linkedin Profile
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="inputField">
+                            <label class="lableName">Mobile Number
+                              <span class="text-danger">*</span>
+                            </label>
+                            <div [ngClass]="{
+                              'invalid':
+                              teamCollabrationForm.get('teamcollabartin_mobile')?.invalid &&
+                              teamCollabrationForm.get('teamcollabartin_mobile')?.touched }">
+                              <input class="form-control form-control-sm" formControlName="teamcollabartin_mobile"
+                                type="text">
+                            </div>
+                            <div>
+                              <span class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_mobile')?.invalid && teamCollabrationForm?.get('teamcollabartin_mobile')?.touched">
+                                Mobile Number is required
+                              </span>
+                              <div class="text-danger"
+                                *ngIf="teamCollabrationForm?.get('teamcollabartin_mobile')?.errors?.['pattren']">
+                                Enter the valid Mobile Number
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 pt-3">
+                          <button class="btn btn-primary" (click)="addTeamCollabrationData()"
+                            [hidden]='teamCollabrationData.controls.length > 3'
+                            *ngIf="teamCollabrationData.controls.length === 1 || teamCollabrationData.controls.length-1===i">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                          </button>
+                        </div>
+
+                        <div
+                          *ngIf="teamCollabrationData.controls.length > 1 && teamCollabrationData.controls.length-1 !== i">
+                          <button class="btn btn-danger mx-2" (click)="deleteTeamCollbartion(i)"
+                            [disabled]="teamCollabrationData.controls.length < 1">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-card>
+                </ng-container>
+              </ng-container>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="socailAccountsForm">
+            <form [formGroup]="socailAccountsForm">
+              <ng-template matStepLabel>Socail Accounts</ng-template>
+              <div class="col-md-12 d-flex">
+                <div class="col-md-3"></div>
+
+                <div class="col-md-6">
+
+                  <div class="">
+                    <label class="lableName">Facebook</label>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">
+                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-md" placeholder="Facebook Url"
+                      aria-label="Facebook Url" aria-describedby="basic-addon1" formControlName="facebook_url">
+                  </div>
+
+                  <div class="">
+                    <label class="lableName">Twitter</label>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-md" placeholder="Twiiter Url"
+                      aria-label="Twiiter Url" aria-describedby="basic-addon1" formControlName="twitter_url">
+                  </div>
+
+                  <div class="">
+                    <label class="lableName">LinkedIn</label>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">
+                        <i class="fa fa-linkedin" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-md" placeholder="LinkedIn Url"
+                      aria-label="LinkedIn Url" aria-describedby="basic-addon1" formControlName="LinkedIn_url">
+                  </div>
+
+                  <div class="">
+                    <label class="lableName">Instagram</label>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-md" placeholder="Instagram Url"
+                      aria-label="Instagram Url" aria-describedby="basic-addon1" formControlName="Instagram_url">
+                  </div>
+
+                  <div class="">
+                    <label class="lableName">Koo</label>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-md" placeholder="Koo Url" aria-label="Koo Url"
+                      aria-describedby="basic-addon1" formControlName="Koo_url">
+                  </div>
+
+                  <div class="">
+                    <label class="lableName">YouTube</label>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">
+                        <i class="fa fa-youtube" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-md" placeholder="YouTube Url"
+                      aria-label="YouTube Url" aria-describedby="basic-addon1" formControlName="Youtube_url">
+                  </div>
+
+                  <div>
+                    <mat-card class="mt-2">
+                      <div class="text-center">
+                        <b>TERMS OF USE</b>
+                      </div>
+                      <mat-card-content>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo magnam similique ex
+                          cupiditate sed quam rem temporibus iure aliquid quisquam, vitae
+                          tenetur voluptates repellat excepturi placeat eos iusto eum? Architecto.</p>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+
+            </form>
+          </mat-step>
+
+        </mat-stepper>
+
+        <footer>
+          <!-- <div class="MSH-footer"> -->
+          <div class="text-center">
+            <!-- [ngClass]="{
+                'justify-content-end': !(StepIndex > 0),
+                'justify-content-between': StepIndex > 0 || StepIndex == 3
+              }" -->
+            <button type="button" *ngIf="StepIndex > 0" (click)="goBack()" class="MSH-prev-btn">
+              Back
+            </button>
+            <button type="submit" *ngIf="StepIndex !== 3" class="btn btn-primary"
+              (click)="incompleteFormSubmission(StepIndex + 1)">
+              Next
+            </button>
+            <button type="button" *ngIf="StepIndex == 3" (click)="submit()" [disabled]="
+                    aboutStartupForm.invalid ||
+                    contactInfoForm.invalid ||
+                    teamCollabrationForm.invalid ||
+                    socailAccountsForm.invalid
+                  " [ngClass]="{
+                    'MSH-disabled-btn':
+                    aboutStartupForm.invalid ||
+                    contactInfoForm.invalid ||
+                    teamCollabrationForm.invalid ||
+                    socailAccountsForm.invalid,
+                    'btn btn-primary':
+                    aboutStartupForm.valid ||
+                    contactInfoForm.valid ||
+                    teamCollabrationForm.valid ||
+                    socailAccountsForm.valid
+                  }">
+              Submit
+            </button>
+          </div>
+          <!-- </div> -->
+        </footer>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,66 +1,68 @@
-<div >
-  <div id="sideNav" mode="side" opened="true" class="d-flex routes-sideBar wrapper doNotPrint"
-  [ngStyle]="isOpened?{'width':'215px'}:{'width':'50px'}">
-    <div class="pt-2">
+<div class="w-100">
+  <ng-container>
+    <app-toopbar></app-toopbar>
+  </ng-container>
+
+
+  <div>
+    <div id="sideNav" mode="side" opened="true" class="d-flex routes-sideBar wrapper doNotPrint"
+      [ngStyle]="isOpened ? {'width':'215px'}:{'width':'50px'}">
       <mat-nav-list>
-        <li class="d-flex menu-Bar pb-2" [ngStyle]="isOpened?{'justify-content':'flex-end'}:null" >
-          <img placement="right"  (click)="openNav()" #expand height="40px" width="40px"
+        <li class="d-flex menu-Bar pb-2" [ngStyle]="isOpened?{'justify-content':'flex-end'}:null">
+          <img placement="right" (click)="openNav()" #expand height="40px" width="40px"
             (mouseenter)="expandPopoverdisable()" class="menu-icon"
-            [src]="isOpened?'../../../assets/images/fabar.png':'../../../../assets/images/fabar.png'"
-            alt="" [ngClass]="!isOpened?'menuicon':'menubar'">
+            [src]="isOpened?'../../../assets/images/fabar.png':'../../../../assets/images/fabar.png'" alt=""
+            [ngClass]="!isOpened?'menuicon':'menubar'">
         </li>
         <div>
-          <a *ngIf="!isOpened" >
-          </a>
-          <a *ngIf="isOpened" >
+          <a *ngIf="!isOpened"> </a>
+          <a *ngIf="isOpened">
             <h2 class="ml-2" style="color:#FFFF">Filters</h2>
             <div>
-            <mat-accordion>
-              <mat-expansion-panel (opened)="panelOpenState = true"
-                                   (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Self aware panel
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </div>
-          <div>
-            <mat-accordion>
-              <mat-expansion-panel (opened)="panelOpenState = true"
-                                   (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Self aware panel
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </div>
+              <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Self aware panel
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <p>I'm visible because I am open</p>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+            <div>
+              <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Self aware panel
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <p>I'm visible because I am open</p>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
 
-          <div>
-            <mat-accordion>
-              <mat-expansion-panel (opened)="panelOpenState = true"
-                                   (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Self aware panel
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </div>
+            <div>
+              <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Self aware panel
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <p>I'm visible because I am open</p>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
 
           </a>
         </div>
       </mat-nav-list>
     </div>
-    <!-- <div id="mainContent" [ngStyle]="isOpened?{'margin-left':'225px'}:{'margin-left':'55px'}">
+    {{isOpened}}
+    <div id="mainContent" [ngClass]="isOpened?'marginnav':'navmargin'">
       <router-outlet></router-outlet>
-    </div> -->
+    </div>
   </div>
 </div>

@@ -1,81 +1,6 @@
-.nav-link{
-  font-size: 12px;
-}
-.navbar-expand-lg .navbar-nav .dropdown-menu {
-  position: absolute;
-  line-height: 0px;
-  font-size: 10px;
-}
-.vertical {
-  border-left: 2px solid black;
-  height: 31px;
-  position: absolute;
-  left: 14%;
-}
-
-.mainContainer{
-  overflow: hidden;
-}
-
-.login-body {
-  background-position: center;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  background-attachment: fixed;
-  overflow-x: hidden !important;
-  overflow-y: hidden !important;
-}
-
-.login-card {
-  background-image: url("/assets/images/registerBackground.jpg") !important;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  height: 100%;
-}
-
-.login-card-two{
-  background-color: rgb(233, 229, 229) !important;
-}
-
-.lableName{
-  padding-top: 5px;
-  margin: 1px;
-}
-
-.cardInsideImage{
-  position: relative;
-  top: 35%;
-  left: 25%;
-}
-
-.cardInsideText{
-  color: #FFFF;
-  position: relative;
-  left: 36%;
-  top: 35%;
-  margin: 0px;
-}
-
-.cardInsideSpan{
-  color: #FFFF;
-  font-size: 5px;
-  position: relative;
-  left: 45%;
-  top: 33%;
-  margin: 0px;
-}
-
 .cardLoginButton{
   top: 50%;
   position: relative;
-}
-
-.cardText{
-  position: relative;
-  top: 35%;
-  left: 25%;
-  color: #FFFF;
 }
 
 .cardLoginButton{
@@ -84,22 +9,8 @@
   left: 42%;
 }
 
-.invalid{
-  border: 1px solid red !important;
-  border-radius: 2px;
-}
-
-input.ng-invalid.ng-dirty {
-  border: 1px solid red;
-}
-
 .input-group-text{
-  height: 63% !important;
-}
-
-.eyeIcon{
-  border: none;
-  background: none;
+  height: 65% !important;
 }
 .mat-icon {
   -webkit-user-select: none;
@@ -114,11 +25,104 @@ input.ng-invalid.ng-dirty {
   padding-right: 17px;
 }
 
-.socailIcon{
+/* .nav-link{
+  font-size: 12px;
+} */
+/* .navbar-expand-lg .navbar-nav .dropdown-menu {
+  position: absolute;
+  line-height: 0px;
+  font-size: 10px;ks
+} */
+/* .vertical {
+  border-left: 2px solid black;
+  height: 31px;
+  position: absolute;
+  left: 14%;
+} */
+
+/* .mainContainer{
+  overflow: none !important;
+} */
+
+/* .login-body {
+  background-position: center;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+} */
+
+/* .login-card {
+  background-image: url("/assets/images/registerBackground.jpg") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
+} */
+
+/* .login-card-two{
+  background-color: rgb(233, 229, 229) !important;
+} */
+
+/* .lableName{
+  padding-top: 5px;
+  margin: 1px;
+} */
+
+/* .cardInsideImage{
+  position: relative;
+  top: 35%;
+  left: 25%;
+} */
+
+/* .cardInsideText{
+  color: #FFFF;
+  position: relative;
+  left: 36%;
+  top: 35%;
+  margin: 0px;
+} */
+
+/* .cardInsideSpan{
+  color: #FFFF;
+  font-size: 5px;
+  position: relative;
+  left: 45%;
+  top: 33%;
+  margin: 0px;
+} */
+
+/* .cardText{
+  position: relative;
+  top: 35%;
+  left: 25%;
+  color: #FFFF;
+} */
+
+
+/* .invalid{
+  border: 1px solid red !important;
+  border-radius: 2px;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 1px solid red;
+} */
+
+
+
+/* .eyeIcon{
+  border: none;
+  background: none;
+} */
+
+
+/* .socailIcon{
   text-align: center;
   align-items: center;
   justify-content: center;
-}
+} */
 
 /* .input-group-prepend{
   height: 0px;
